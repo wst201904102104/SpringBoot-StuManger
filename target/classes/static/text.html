@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ces</title>
+    <style>
+        /*div{*/
+        /*    height: 20px;*/
+        /*    width: 100px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div>
+<form action="/selByName" id="form1" method="post">
+    <input form="form1" type="text" name="name" />
+    <button class="btn btn-default" type="submit">姓名搜索</button>
+</form>
+</div>
+<div>
+<form action="/selById" id="form2" method="post">
+    <input form="form1" type="text" name="id" />
+    <button class="btn btn-default" type="submit">ID搜索</button>
+</form>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">选择</span></th>
+        <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">id</span></th>
+        <th><span class="glyphicon glyphicon-list"></span> <span class="visible-lg">姓名</span></th>
+        <th class="hidden-sm"><span class="glyphicon glyphicon-tag"></span> <span class="visible-lg">性别</span></th>
+        <th class="hidden-sm"><span class="glyphicon glyphicon-comment"></span> <span class="visible-lg">年龄</span></th>
+        <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">成绩</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">电话</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">班级</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="stu:${stuList}">
+        <td><input type="checkbox" class="input-control" value="" name="checkbox []"/></td>
+        <td class="article-title" th:text="${stu.getId()}"></td>
+        <td th:text="${stu.getName()}"></td>
+        <td class="hidden-sm" th:text="${stu.getSex()}"></td>
+        <td class="hidden-sm" th:text="${stu.getAge()}"></td>
+        <td th:text="${stu.getScore()}"></td>
+        <td th:text="${stu.getTel()}"></td>
+        <td th:text="${stu.getClassid()}"></td>
+        <td><a th:href="'/editUpdate?id='+${stu.getId()}">修改</a> <a th:rel="${stu.getId()}">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
